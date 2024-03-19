@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import TitleForm from "./_components/title-page";
 import DescriptionForm from "./_components/description-page";
 import ImageForm from "./_components/image-page";
+import CategoryForm from "./_components/category-page";
 
 const SpecificCoursePage = async ({
   params,
@@ -20,8 +21,16 @@ const SpecificCoursePage = async ({
       id: params.courseId,
     },
   });
-  console.log(course);
+
   if (course?.userId !== userId) return redirect("/");
+
+  const categories = await db.category.findMany({
+    orderBy: {
+      name: "asc",
+    },
+  });
+
+  console.log("categories: ",categories);
 
   const requireField = [
     course.title,
@@ -44,6 +53,13 @@ const SpecificCoursePage = async ({
       <TitleForm courseInfo={course} />
       <DescriptionForm courseInfo={course} />
       <ImageForm courseInfo={course} />
+      <CategoryForm
+        courseInfo={course}
+        options={categories.map((category) => ({
+          label: category.name,
+          value: category.id,
+        }))}
+      />
     </>
   );
 };

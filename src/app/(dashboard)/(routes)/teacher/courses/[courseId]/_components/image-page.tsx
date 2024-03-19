@@ -58,6 +58,7 @@ const ImageForm = ({ courseInfo }: obj) => {
       {isEditing && (
         <FileUpload
           onChange={(url) => {
+            console.log("UUrrll: ",url)
             if (url) {
               onSubmit({ imageUrl: url });
             }

@@ -12,6 +12,7 @@ const FileUpload = ({ onChange, endpoint }: FileUpload) => {
     <UploadDropzone
       endpoint={endpoint}
       onClientUploadComplete={(res: any) => {
+        console.log("rress: ",res)
         onChange(res?.[0].url);
         toast.success("Upload Completed");
       }}
