@@ -7,6 +7,8 @@ import TitleForm from "./_components/title-page";
 import DescriptionForm from "./_components/description-page";
 import ImageForm from "./_components/image-page";
 import CategoryForm from "./_components/category-page";
+import PriceForm from "./_components/price-page";
+import AttachmentForm from "./_components/attachment-page";
 
 const SpecificCoursePage = async ({
   params,
@@ -20,6 +22,13 @@ const SpecificCoursePage = async ({
     where: {
       id: params.courseId,
     },
+    include:{
+      attachments:{
+        orderBy:{
+          createdAt:"desc"
+        }
+      }
+    }
   });
 
   if (course?.userId !== userId) return redirect("/");
@@ -60,6 +69,8 @@ const SpecificCoursePage = async ({
           value: category.id,
         }))}
       />
+      <PriceForm courseInfo={course} />
+      <AttachmentForm courseInfo={course} />
     </>
   );
 };

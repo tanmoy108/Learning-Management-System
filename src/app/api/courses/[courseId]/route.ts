@@ -8,6 +8,7 @@ export async function  PATCH(req:Request,{params}:{params:{courseId:string}}){
     if(!userId) return new NextResponse("unauthorized",{status:401})
 
     const values = await req.json()
+    console.log("route patch", values)
     const findCourse = await db.course.update({
         where:{
             id:params.courseId,
