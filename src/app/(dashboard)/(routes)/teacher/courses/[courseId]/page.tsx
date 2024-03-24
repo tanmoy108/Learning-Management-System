@@ -9,6 +9,7 @@ import ImageForm from "./_components/image-page";
 import CategoryForm from "./_components/category-page";
 import PriceForm from "./_components/price-page";
 import AttachmentForm from "./_components/attachment-page";
+import ChapterForm from "./_components/chapter-page";
 
 const SpecificCoursePage = async ({
   params,
@@ -22,13 +23,18 @@ const SpecificCoursePage = async ({
     where: {
       id: params.courseId,
     },
-    include:{
-      attachments:{
+    include: {
+      attachments: {
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
+      chapter:{
         orderBy:{
-          createdAt:"desc"
+          position:"asc"
         }
       }
-    }
+    },
   });
 
   if (course?.userId !== userId) return redirect("/");
@@ -39,7 +45,7 @@ const SpecificCoursePage = async ({
     },
   });
 
-  console.log("categories: ",categories);
+  console.log("categories: ", categories);
 
   const requireField = [
     course.title,
@@ -47,6 +53,7 @@ const SpecificCoursePage = async ({
     course.imageUrl,
     course.price,
     course.categoryId,
+    course.chapter.some(chapter => chapter.isPublished),
   ];
   const totalFieldLength = requireField.length;
   const completeField = requireField.filter(Boolean).length;
@@ -71,6 +78,7 @@ const SpecificCoursePage = async ({
       />
       <PriceForm courseInfo={course} />
       <AttachmentForm courseInfo={course} />
+      <ChapterForm courseInfo={course} />
     </>
   );
 };
