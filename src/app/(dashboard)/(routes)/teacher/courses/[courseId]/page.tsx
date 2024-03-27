@@ -10,6 +10,7 @@ import CategoryForm from "./_components/category-page";
 import PriceForm from "./_components/price-page";
 import AttachmentForm from "./_components/attachment-page";
 import ChapterForm from "./_components/chapter-page";
+import ControlButtonCourse from "./_components/control-button";
 
 const SpecificCoursePage = async ({
   params,
@@ -57,11 +58,17 @@ const SpecificCoursePage = async ({
   ];
   const totalFieldLength = requireField.length;
   const completeField = requireField.filter(Boolean).length;
+  const isComplete = requireField.every(Boolean);
 
   return (
     <>
       <h1>Course Setup</h1>
       <p>Complete All Fields {`(${completeField}/${totalFieldLength})`}</p>
+
+      <div className="mt-5">
+        <ControlButtonCourse disabled={isComplete} courseId={params.courseId}  isPublished={course.isPublished}/>
+      </div>
+
       <div className="flex gap-x-3 items-center">
         <IconBadge icon={LayoutDashboard} size="sm" />
         <p>Customize your course</p>
