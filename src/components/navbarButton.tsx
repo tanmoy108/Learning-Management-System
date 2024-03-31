@@ -3,14 +3,20 @@ import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
+import Search from "./search";
 
 const NavbarButton = () => {
   const pathName = usePathname();
 
   const isTeacherMode = pathName?.startsWith("/teacher")
   const isPlayerMode = pathName?.includes("/chapter")
+  const isSearchMode = pathName === "/search"
 
   return (
+    <>
+    <div>
+     {isSearchMode &&  <Search/>}
+    </div>
     <div className="flex items-center gap-x-3" >
       {
         isTeacherMode || isPlayerMode ? (
@@ -29,6 +35,7 @@ const NavbarButton = () => {
       }
       <UserButton afterSignOutUrl="/" />
     </div>
+    </>
   );
 };
 
