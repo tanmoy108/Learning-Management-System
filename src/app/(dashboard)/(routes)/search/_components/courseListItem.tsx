@@ -1,3 +1,6 @@
+import { FormatPrice } from "@/lib/formatPrice"
+import Image from "next/image"
+import Link from "next/link"
 
 interface courseListItemProps{
     id:string,
@@ -10,7 +13,20 @@ interface courseListItemProps{
 }
 const CourseListItem = ({id,title,price,imageUrl,progress,category,chapterLength}:courseListItemProps) => {
   return (
-    <div>CourseListItem</div>
+    <div>
+      <Link href={`/courses/${id}`}>
+      <div className="w-60 h-10">
+        <Image src={imageUrl} alt={title} width={500} height={260} className="" />
+        <div>{title}</div>
+        <div>{chapterLength} {chapterLength==1 ? "chapter" :"chapters"}</div>
+        <div>
+          {FormatPrice(price)}
+        </div>
+
+      </div>
+      
+      </Link>
+    </div>
   )
 }
 

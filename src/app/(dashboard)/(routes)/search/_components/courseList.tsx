@@ -16,7 +16,7 @@ const CourseList = ({ item }: courseListProps) => {
   return (
     <>
       <div>{item.length === 0 && <div>No Course Found</div>}</div>
-      <div>
+      <div className="grid grid-cols-3 gap-3">
         {item.map((item) => (
           <CourseListItem
             key={item.id}

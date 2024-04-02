@@ -9,7 +9,7 @@ const NavbarButton = () => {
   const pathName = usePathname();
 
   const isTeacherMode = pathName?.startsWith("/teacher")
-  const isPlayerMode = pathName?.includes("/chapter")
+  const isPlayerMode = pathName?.includes("/courses")
   const isSearchMode = pathName === "/search"
 
   return (
