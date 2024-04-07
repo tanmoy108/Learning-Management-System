@@ -4,6 +4,7 @@ import { Chapter, Course, UserProgress } from "@prisma/client";
 import { redirect } from "next/navigation";
 import React from "react";
 import ChapterList from "./chapterList";
+import { CourseProgress } from "@/components/courseProgress";
 interface courseSidebarProps {
   course: Course & {
     chapter: (Chapter & {
@@ -28,6 +29,11 @@ const CoursesSidebar = async ({ course, progress }: courseSidebarProps) => {
   return (
     <div>
       <div>{course.title}</div>
+      {
+        purchase && <div className="py-3">
+        <CourseProgress variant="success" value={progress} />
+        </div>
+      }
       <div>
         {course.chapter.length !== 0 &&
           course.chapter.map((item) => {

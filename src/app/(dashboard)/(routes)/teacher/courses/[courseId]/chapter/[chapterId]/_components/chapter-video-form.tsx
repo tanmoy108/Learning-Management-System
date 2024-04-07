@@ -31,6 +31,7 @@ const ChapterVideoForm = ({ chapterInfo, courseId }: obj) => {
       `/api/courses/${courseId}/chapter/${chapterInfo.id}`,
       values
     );
+    console.log(data)
     toogleEditing();
     if (data.success) {
       toast.success("Updated");

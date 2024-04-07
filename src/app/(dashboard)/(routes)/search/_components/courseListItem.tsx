@@ -1,3 +1,4 @@
+import { CourseProgress } from "@/components/courseProgress"
 import { FormatPrice } from "@/lib/formatPrice"
 import Image from "next/image"
 import Link from "next/link"
@@ -20,7 +21,7 @@ const CourseListItem = ({id,title,price,imageUrl,progress,category,chapterLength
         <div>{title}</div>
         <div>{chapterLength} {chapterLength==1 ? "chapter" :"chapters"}</div>
         <div>
-          {FormatPrice(price)}
+          {progress !== null ? <CourseProgress variant="success" value={progress} /> :FormatPrice(price)}
         </div>
 
       </div>

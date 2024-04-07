@@ -9,11 +9,12 @@ async function main(){
                 {name:"Computer Science"},
                 {name:"Machience Learning"},
                 {name:"Mathematic"},
-                {name:"Artificial Intelligence"}
+                {name:"Artificial Intelligence"},
+                {name:"Chemistry"},
             ]
         })
     } catch (error) {
-        console.log("error in categories")
+        console.log("error in categories",error)
     } finally{
         await database.$disconnect()
     }

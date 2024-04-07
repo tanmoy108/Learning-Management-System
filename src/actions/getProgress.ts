@@ -14,9 +14,9 @@ export const GetProgress = async (
         id: true,
       },
     });
-    console.log("publishedChapters", publishedChapters); //[ { id: '4e4cff83-fc98-4d9a-95a0-85ec21f17173' } ]
+    console.log("publishedChapters", publishedChapters); //[ { id: '4e4cff83-fc98-4d9a-95a0-85ec21f17173' },... ]
     const publishedChapterIds = publishedChapters.map((chapter) => chapter.id);
-    console.log("publishedChapterIds", publishedChapterIds); // [ '4e4cff83-fc98-4d9a-95a0-85ec21f17173' ]
+    console.log("publishedChapterIds", publishedChapterIds); // [ '4e4cff83-fc98-4d9a-95a0-85ec21f17173',... ]
     const validCompletedChapters = await db.userProgress.count({
       where: {
         userId: userId,
