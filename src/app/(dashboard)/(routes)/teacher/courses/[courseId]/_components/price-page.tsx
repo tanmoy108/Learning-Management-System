@@ -53,18 +53,20 @@ const PriceForm = ({ courseInfo }: obj) => {
 
   const { isSubmitting, isValid } = form.formState;
   return (
-    <div className="bg-orange-100">
+    <div>
       <div className="flex items-center">
-        <h2>Course price</h2>
-        <Button onClick={toogleEditing} variant={"ghost"}>
+        <div className="text-[#414141] text-[16px] font-medium leading-8">
+        Course Price
+        </div>
+        <Button onClick={toogleEditing} variant="ownedit" size="ownsize">
           {!isEditing ? <>Edit price</> : <>Cancel</>}
         </Button>
       </div>
-      {!isEditing && courseInfo?.price && <p>{FormatPrice(courseInfo?.price)}</p>}
+      {!isEditing && courseInfo?.price && <div className="text-[#414141] font-light text-[14px] leading-8">{FormatPrice(courseInfo?.price)}</div>}
       {/* {!isEditing && !courseInfo?.price && <p>no price</p>} */}
       {isEditing && (
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
             <FormField
               control={form.control}
               name="price"
@@ -72,7 +74,7 @@ const PriceForm = ({ courseInfo }: obj) => {
                 <FormItem>
                   <FormControl>
                     <Input
-                      placeholder="enter price"
+                      placeholder="Enter Price"
                       disabled={isSubmitting}
                       type="number"
                       {...field}
@@ -82,7 +84,7 @@ const PriceForm = ({ courseInfo }: obj) => {
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={!isValid || isSubmitting}>
+            <Button type="submit" variant="own" disabled={!isValid || isSubmitting}>
               Save
             </Button>
           </form>

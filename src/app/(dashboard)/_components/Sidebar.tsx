@@ -4,9 +4,9 @@ import SidebarItems from './SidebarItems'
 
 const Sidebar = () => {
   return (
-    <div className='w-full py-5'>
-       <div className='flex justify-center pb-3'>
-        <Image src="/logo.svg" width={130} height={130} alt='logo'/>
+    <div className='w-full'>
+       <div className='flex pl-8 py-[23px]'>
+        <Image src="/logo.png" width={164.638} height={34} alt='logo'/>
        </div>
        <div className='w-full'>
         <SidebarItems/>

@@ -8,7 +8,7 @@ interface CourseProgressProps {
 };
 
 const colorByVariant = {
-  default: "text-sky-700",
+  default: "text-[#191919]",
   success: "text-emerald-700",
 }
 
@@ -23,18 +23,18 @@ export const CourseProgress = ({
   size,
 }: CourseProgressProps) => {
   return (
-    <div>
+    <div className="flex gap-x-2 items-center">
       <Progress
         className="h-2"
         value={value}
         variant={variant}
       />
       <p className={cn(
-        "font-medium mt-2 text-sky-700",
+        "font-bold",
         colorByVariant[variant || "default"],
         sizeByVariant[size || "default"],
       )}>
-        {Math.round(value)}% Complete
+        {Math.round(value)}%
       </p>
     </div>
   )

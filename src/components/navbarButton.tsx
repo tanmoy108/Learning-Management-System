@@ -21,13 +21,13 @@ const NavbarButton = () => {
       {
         isTeacherMode || isPlayerMode ? (
           <Link href="/">
-          <Button variant="ghost" size="sm" >
+          <Button variant="own" >
             Exit
           </Button>
           </Link>
         ):(
           <Link href={"/teacher/courses"}>
-          <Button variant="ghost" size="sm">
+          <Button variant="own">
             Teacher Mode
           </Button>
           </Link>

@@ -2,7 +2,7 @@ import { GetChapter } from "@/actions/getChapter";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import React from "react";
-import VideoPlayer from "../../_components/videoPlayer";
+import VideoPlayers from "../../_components/videoPlayer";
 import EnrollButton from "../../_components/enrollButton";
 import CourseCompleteButton from "../../_components/courseCompleteButton";
 
@@ -37,7 +37,7 @@ const ChapterInfo = async ({
   return (
     <div>
       {isLocked ? <div>chapter not purchased</div> : <div>chapter is free</div>}
-      <VideoPlayer
+      <VideoPlayers
         playbackId={muxData?.playBackId!}
         courseId={courseId}
         chapterId={chapterId}

@@ -6,6 +6,7 @@ import { Loader2, Lock } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
+import ReactPlayer from 'react-player'
 
 interface videoPlayerProps{
   playbackId:string
@@ -17,7 +18,7 @@ interface videoPlayerProps{
   completeOnEnd:boolean
 }
 
-const VideoPlayer = ({ playbackId,
+const VideoPlayers = ({ playbackId,
   courseId,
   chapterId,
   nextChapterId,
@@ -54,13 +55,15 @@ const VideoPlayer = ({ playbackId,
 
   return (
    <div>
+     <ReactPlayer playing={true} controls={true}
+        pip={true} stopOnUnmount={false} width={640} height={360} url="https://utfs.io/f/aa07abfc-aca9-48cf-b83b-e97da10795c6-2wt9u9.mp4" />
     {!isReady && !isLocked && (
-        <div className="absolute inset-0 flex items-center justify-center bg-slate-800">
+        <div className="absolute inset-0 flex items-center justify-center w-5 h-6 bg-slate-800">
           <Loader2 className="h-8 w-8 animate-spin text-secondary" />
         </div>
       )}
     {isLocked && (
-        <div className="absolute inset-0 flex items-center justify-center bg-slate-800 flex-col gap-y-2 text-secondary">
+        <div className="absolute inset-0 flex items-center justify-center w-5 h-6 bg-slate-800 flex-col gap-y-2 text-secondary">
           <Lock className="h-8 w-8" />
           <p className="text-sm">
             This chapter is locked
@@ -71,7 +74,7 @@ const VideoPlayer = ({ playbackId,
       !isLocked &&  <MuxPlayer
       title={title}
       className={cn(
-        !isReady && "hidden"
+        !isReady && "hidden w-5 h-6"
       )}
       onCanPlay={() => setIsReady(true)}
       onEnded={onEnd}
@@ -79,9 +82,10 @@ const VideoPlayer = ({ playbackId,
       playbackId={playbackId}
     />
     }
+   
   
    </div>
   )
 }
 
-export default VideoPlayer
+export default VideoPlayers

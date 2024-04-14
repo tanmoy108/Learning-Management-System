@@ -31,7 +31,7 @@ interface obj {
   };
 }
 const TitleForm = ({ courseInfo }: obj) => {
-    const router = useRouter()
+  const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
   const toogleEditing = () => {
     setIsEditing((previous) => !previous);
@@ -44,28 +44,34 @@ const TitleForm = ({ courseInfo }: obj) => {
     },
   });
 
- async function onSubmit(values: z.infer<typeof formSchema>) {
-    const {data} = await axios.patch(`/api/courses/${courseInfo.id}`,values)
-    toogleEditing()
-    if(data.success){
-        toast.success("Updated")
-        router.refresh()
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const { data } = await axios.patch(`/api/courses/${courseInfo.id}`, values);
+    toogleEditing();
+    if (data.success) {
+      toast.success("Updated");
+      router.refresh();
     }
   }
 
   const { isSubmitting, isValid } = form.formState;
   return (
-    <div className="bg-orange-100">
+    <div>
       <div className="flex items-center">
-        <h2>Course Title</h2>
-        <Button onClick={toogleEditing} variant={"ghost"}>
-          {!isEditing ? <>Edit Title</> : <>Cancel</>}
+        <div className="text-[#414141] text-[16px] font-medium leading-8">
+          Course Title
+        </div>
+        <Button onClick={toogleEditing} variant="ownedit" size="ownsize">
+          {!isEditing ? <>Edit</> : <>Cancel</>}
         </Button>
       </div>
-      {!isEditing && <p>{courseInfo.title}</p>}
+      {!isEditing && (
+        <div className="text-[#414141] font-light text-[14px] leading-8">
+          {courseInfo.title}
+        </div>
+      )}
       {isEditing && (
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
             <FormField
               control={form.control}
               name="title"
@@ -82,7 +88,11 @@ const TitleForm = ({ courseInfo }: obj) => {
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={!isValid || isSubmitting}>
+            <Button
+              type="submit"
+              variant="own"
+              disabled={!isValid || isSubmitting}
+            >
               Save
             </Button>
           </form>

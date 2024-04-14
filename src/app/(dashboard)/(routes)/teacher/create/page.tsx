@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const formSchema = z.object({
   title: z.string().min(2, {
@@ -37,7 +38,6 @@ const CreatePage = () => {
     try {
       const { data } = await axios.post("/api/courses", values);
       router.push(`/teacher/courses/${data?.id}`);
-      console.log(data)
       toast.success("Course Created");
     } catch (error) {
       toast.error("Something wrong");
@@ -47,29 +47,56 @@ const CreatePage = () => {
   const { isSubmitting, isValid } = form.formState;
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="title"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Title</FormLabel>
-              <FormControl>
-                <Input placeholder="shadcn" {...field} />
-              </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit" disabled={!isValid || isSubmitting}>
-          Submit
-        </Button>
-      </form>
-    </Form>
+    <div
+      className="flex justify-center"
+      style={{ height: `calc(100vh - 90px)` }}
+    >
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8 flex flex-col items-center justify-center "
+        >
+          <FormField
+            control={form.control}
+            name="title"
+            render={({ field }) => (
+              <FormItem>
+                <div className="flex flex-col  items-center">
+                  <Image
+                    alt="form logo"
+                    src="/create_form.png"
+                    width={140}
+                    height={123}
+                  />
+                  <FormLabel>
+                    <div className="text-[#414141] text-[18px] font-bold tracking-[0.54px] leading-8">
+                      Enter Course Name
+                    </div>
+                  </FormLabel>
+                  <FormDescription>
+                    <div className="text-[#414141] text-[14px] font-normal leading-8">
+                      This is name wii be show in the course list
+                    </div>
+                  </FormDescription>
+                  <FormControl>
+                    <Input placeholder="shadcn" {...field} />
+                  </FormControl>
+
+                  <FormMessage />
+                </div>
+              </FormItem>
+            )}
+          />
+          <Button
+            variant="ownfull"
+            type="submit"
+            disabled={!isValid || isSubmitting}
+          >
+            Create
+          </Button>
+        </form>
+      </Form>
+    </div>
   );
 };
 

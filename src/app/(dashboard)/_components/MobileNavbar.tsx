@@ -16,7 +16,7 @@ const MobileNavbar = () => {
         <Menu />
       </SheetTrigger>
       <SheetContent side="left">
-        <Sidebar/>
+        <Sidebar />
       </SheetContent>
     </Sheet>
   );

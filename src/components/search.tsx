@@ -28,7 +28,7 @@ useEffect(()=>{
 
 },[searchValue,pathName,router,currentCategoryId])
   return (
-    <div>
+    <div className='bg-slate-400'>
       <Input onChange={(e)=>setValue(e.target.value)} value={value} type="text" placeholder="Search courses" />
     </div>
   )

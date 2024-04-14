@@ -65,15 +65,15 @@ const publishAction = async () => {
 
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex gap-x-3">
         
-          <Button onClick={publishAction} disabled={!disabled || isLoading}>
+          <Button variant="own" onClick={publishAction} disabled={!disabled || isLoading}>
             {isPublished ? "Unpublish" : "Publish"}
           </Button>
         
         <div>
         <AlertModal onClickAlert={alertContinue} >
-          <Button disabled={isLoading} >
+          <Button variant="owndelete" disabled={isLoading} >
             <Trash className="h-4 w-4" />
           </Button>
           </AlertModal>

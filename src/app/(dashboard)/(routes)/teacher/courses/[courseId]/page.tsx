@@ -30,11 +30,11 @@ const SpecificCoursePage = async ({
           createdAt: "desc",
         },
       },
-      chapter:{
-        orderBy:{
-          position:"asc"
-        }
-      }
+      chapter: {
+        orderBy: {
+          position: "asc",
+        },
+      },
     },
   });
 
@@ -54,39 +54,56 @@ const SpecificCoursePage = async ({
     course.imageUrl,
     course.price,
     course.categoryId,
-    course.chapter.some(chapter => chapter.isPublished),
+    course.chapter.some((chapter) => chapter.isPublished),
   ];
   const totalFieldLength = requireField.length;
   const completeField = requireField.filter(Boolean).length;
   const isComplete = requireField.every(Boolean);
 
   return (
-    <>
-      <h1>Course Setup</h1>
-      <p>Complete All Fields {`(${completeField}/${totalFieldLength})`}</p>
-
-      <div className="mt-5">
-        <ControlButtonCourse disabled={isComplete} courseId={params.courseId}  isPublished={course.isPublished}/>
+    <div className="w-full md:w-[90%]">
+      <div className="flex xs:flex-col md:flex-row md:justify-between md:items-center mb-4">
+        <div>
+          <div className="text-[#414141] text-[20px] font-bold leading-[32px] tracking-[1.8px]">
+            Course Setup
+          </div>
+          <div className="text-[#414141] text-[16px] font-vold leading-[32px] tracking-[-0.16px]">
+            Complete All Fields ({`(${completeField}/${totalFieldLength})`})
+          </div>
+        </div>
+        <div className="mt-5">
+          <ControlButtonCourse
+            disabled={isComplete}
+            courseId={params.courseId}
+            isPublished={course.isPublished}
+          />
+        </div>
       </div>
 
-      <div className="flex gap-x-3 items-center">
+      {/* <div className="flex gap-x-3 items-center">
         <IconBadge icon={LayoutDashboard} size="sm" />
         <p>Customize your course</p>
+      </div> */}
+      <div className="flex flex-col md:flex-row justify-between gap-x-2">
+        <div className="w-[90%] md:w-[50%] flex flex-col gap-y-5">
+          <TitleForm courseInfo={course} />
+          <DescriptionForm courseInfo={course} />
+          <ImageForm courseInfo={course} />
+          <CategoryForm
+            courseInfo={course}
+            options={categories.map((category) => ({
+              label: category.name,
+              value: category.id,
+            }))}
+          />
+        </div>
+        <div className="w-[90%] md:w-[45%] flex flex-col gap-y-5">
+          <PriceForm courseInfo={course} />
+          <AttachmentForm courseInfo={course} />
+          <ChapterForm courseInfo={course} />
+        </div>
       </div>
-      <TitleForm courseInfo={course} />
-      <DescriptionForm courseInfo={course} />
-      <ImageForm courseInfo={course} />
-      <CategoryForm
-        courseInfo={course}
-        options={categories.map((category) => ({
-          label: category.name,
-          value: category.id,
-        }))}
-      />
-      <PriceForm courseInfo={course} />
-      <AttachmentForm courseInfo={course} />
-      <ChapterForm courseInfo={course} />
-    </>
+    </div>
   );
 };
 

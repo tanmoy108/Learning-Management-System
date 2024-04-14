@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      boxShadow: {
+        'own': '0px -7px 30.3px 2px rgba(0, 0, 0, 0.25)',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -73,8 +76,16 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
+    screens: {
+      'xs':"280px",
+      'sm': '576px',
+      'md': '768px',
+      'lg': '992px',
+      'xl': '1200px',
+      '2xl': '1400px',
+    }
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"),require('tailwindcss-debug-screens'),],
 } satisfies Config
 
 export default config

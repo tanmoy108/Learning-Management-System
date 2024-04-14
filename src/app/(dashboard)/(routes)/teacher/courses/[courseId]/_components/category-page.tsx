@@ -61,14 +61,16 @@ const CategoryForm = ({ courseInfo,options }: obj) => {
   const selectedOption = options.find((option)=>option.value === courseInfo.categoryId)
 
   return (
-    <div className="bg-orange-100">
+    <div>
       <div className="flex items-center">
-        <h2>Course category</h2>
-        <Button onClick={toogleEditing} variant={"ghost"}>
+        <div className="text-[#414141] text-[16px] font-medium leading-8">
+        Course category
+        </div>
+        <Button onClick={toogleEditing} variant="ownedit" size="ownsize">
           {!isEditing ? <>Edit category</> : <>Cancel</>}
         </Button>
       </div>
-      {!isEditing && <p>{selectedOption?.label || `no category`} </p>}
+      {!isEditing && <div className="text-[#414141] font-light text-[14px] leading-8">{selectedOption?.label || `No Category`} </div>}
       {isEditing && (
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">

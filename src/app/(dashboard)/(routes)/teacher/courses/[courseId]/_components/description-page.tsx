@@ -53,17 +53,17 @@ const DescriptionForm = ({ courseInfo }: obj) => {
 
   const { isSubmitting, isValid } = form.formState;
   return (
-    <div className="bg-orange-100">
+    <div>
       <div className="flex items-center">
-        <h2>Course description</h2>
-        <Button onClick={toogleEditing} variant={"ghost"}>
-          {!isEditing ? <>Edit description</> : <>Cancel</>}
+        <div className="text-[#414141] text-[16px] font-medium leading-8">Course Description</div>
+        <Button onClick={toogleEditing} variant="ownedit" size="ownsize">
+          {!isEditing ? <>Edit</> : <>Cancel</>}
         </Button>
       </div>
-      {!isEditing && <p>{courseInfo?.description}</p>}
+      {!isEditing && <div className="text-[#414141] font-light text-[14px]">{courseInfo?.description}</div>}
       {isEditing && (
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
             <FormField
               control={form.control}
               name="description"
@@ -80,7 +80,7 @@ const DescriptionForm = ({ courseInfo }: obj) => {
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={!isValid || isSubmitting}>
+            <Button type="submit" variant="own" disabled={!isValid || isSubmitting}>
               Save
             </Button>
           </form>

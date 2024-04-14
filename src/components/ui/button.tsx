@@ -19,12 +19,17 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        own:"bg-[#17B686] rounded-[3px] py-[12px] px-[31px] text-[#fff] text-[13px] tracking-[-0.13px]",
+        owndelete:"bg-[#F36849] rounded-[3px] py-[12px] px-[31px] text-[#fff] text-[13px] tracking-[-0.13px]",
+        ownfull:"bg-[#17B686] rounded-[3px] py-[12px] px-[31px] text-[#fff] text-[13px] tracking-[-0.13px] w-full",
+        ownedit:"text-[#000] text-[12px] font-extralight leading-[0px] tracking-[0.6px]",
       },
       size: {
         default: "h-9 px-4 py-2",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
         icon: "h-9 w-9",
+        ownsize:"h-5 px-8"
       },
     },
     defaultVariants: {

@@ -1,29 +1,28 @@
 'use client'
 import React from "react";
-import { LayoutDashboard, Search } from "lucide-react";
 import SideItem from "./SideItem";
 import { usePathname } from "next/navigation";
 
 const guestRoutes = [
   {
-    icon: LayoutDashboard,
+    icon: "/dashboard.png",
     label: "Dashboard",
     href: "/",
   },
   {
-    icon: Search,
+    icon: "/browser.png",
     label: "Browse",
     href: "/search",
   },
 ];
 const teacherRoutes = [
   {
-    icon: LayoutDashboard,
+    icon:"/courses.png",
     label: "Courses",
     href: "/teacher/courses",
   },
   {
-    icon: Search,
+    icon: "/analytics.png",
     label: "Analytics",
     href: "/teacher/analytics",
   },

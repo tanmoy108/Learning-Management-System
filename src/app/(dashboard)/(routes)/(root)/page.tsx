@@ -12,16 +12,21 @@ const DashBoardRoot = async () => {
 
   const { completedCourses, coursesInProgress } = await GetDashboard(userId);
 
-  console.log("tanmoy", completedCourses);
-  console.log("punam", coursesInProgress);
-
   return (
-    <div>
-      <div className="flex gap-x-10">
-        <Icon label="In Progress" value={coursesInProgress.length} icon={Clock} variant="default"/>
-        <Icon label="Completed Courses" value={completedCourses.length} icon={CircleCheck} variant="success"/>
+    <div className="h-screen">
+      <div className="flex sm:flex-col md:flex-row gap-5 mb-5">
+        <div className="w-[363px] h-[77px] rounded-md bg-[#fff] flex items-center gap-x-2 pl-4">
+           <img src="/clock.png" />
+           <p className="text-[18px]">In Progress: {coursesInProgress.length}</p>
+        </div>
+        <div className="w-[363px] h-[77px] rounded-md bg-[#fff] flex items-center gap-x-2 pl-4">
+           <img src="/completed.png" />
+           <p className="text-[18px]">Completed Course: {completedCourses.length}</p>
+        </div>
+        {/* <Icon label="In Progress" value={coursesInProgress.length} icon={Clock} variant="default"/> */}
+        {/* <Icon label="Completed Courses" value={completedCourses.length} icon={CircleCheck} variant="success"/> */}
       </div>
-      <div className="grid">
+      <div>
       <CourseList item={[...coursesInProgress,...completedCourses]}/>
       </div>
     </div>

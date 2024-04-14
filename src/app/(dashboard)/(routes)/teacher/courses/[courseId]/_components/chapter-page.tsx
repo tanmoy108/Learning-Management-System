@@ -78,10 +78,12 @@ const ChapterForm = ({ courseInfo }: obj) => {
 
   const { isSubmitting, isValid } = form.formState;
   return (
-    <div className="bg-orange-100">
+    <div>
       <div className="flex items-center">
-        <h2>Course Chapter</h2>
-        <Button onClick={toogleEditing} variant={"ghost"}>
+        <div className="text-[#414141] text-[16px] font-medium leading-8">
+        Course Chapters
+        </div>
+        <Button onClick={toogleEditing} variant="ownedit" size="ownsize">
           {!isCreating ? <>Add Chapter</> : <>Cancel</>}
         </Button>
       </div>
@@ -104,7 +106,7 @@ const ChapterForm = ({ courseInfo }: obj) => {
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={!isValid || isSubmitting}>
+            <Button type="submit" variant={"own"} disabled={!isValid || isSubmitting}>
               Create
             </Button>
           </form>
@@ -113,10 +115,8 @@ const ChapterForm = ({ courseInfo }: obj) => {
 
       {!isCreating && (
         <div
-          className={cn(
-            "text-sm mt-2",
-            !courseInfo.chapter.length && "text-slate-500 italic"
-          )}
+          className=
+            "text-[#414141] font-light text-[14px] leading-8"
         >
           {!courseInfo.chapter.length && "No chapters"}
         </div>

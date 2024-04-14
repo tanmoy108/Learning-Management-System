@@ -15,84 +15,90 @@ const formSchema = z.object({
 });
 
 interface obj {
-  courseInfo: Course & {attachments:Attachment[]};
+  courseInfo: Course & { attachments: Attachment[] };
 }
 const AttachmentForm = ({ courseInfo }: obj) => {
   const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
-  const [deleteItem,setDeleteItem] = useState<string|null >(null)
+  const [deleteItem, setDeleteItem] = useState<string | null>(null);
   const toogleEditing = () => {
     setIsEditing((previous) => !previous);
   };
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const { data } = await axios.post(`/api/courses/${courseInfo.id}/attachments`, values);
+    const { data } = await axios.post(
+      `/api/courses/${courseInfo.id}/attachments`,
+      values
+    );
     toogleEditing();
-    console.log(data)
+    console.log(data);
     if (data.success) {
       toast.success("Updated");
       router.refresh();
     }
-   
   }
 
-  const onDelete =async(id:string)=>{
+  const onDelete = async (id: string) => {
     try {
-      setDeleteItem(id)
-      const {data} = await axios.delete(`/api/courses/${courseInfo.id}/attachments/${id}`)
-      console.log(data)
+      setDeleteItem(id);
+      const { data } = await axios.delete(
+        `/api/courses/${courseInfo.id}/attachments/${id}`
+      );
+      console.log(data);
       toast.success("Deleted");
-      router.refresh()
-
+      router.refresh();
     } catch (error) {
-
-      console.log(error)
-      
-    }finally{
-      setDeleteItem(null)
+      console.log(error);
+    } finally {
+      setDeleteItem(null);
     }
-
-  }
+  };
   return (
-    <div className="bg-orange-100">
+    <div>
       <div className="flex items-center">
-        <h2>attachment</h2>
-        <Button onClick={toogleEditing} variant={"ghost"}>
+        <div className="text-[#414141] text-[16px] font-medium leading-8">
+          Attachment
+        </div>
+        <Button onClick={toogleEditing} variant="ownedit" size="ownsize">
           {isEditing && <>Cancel</>}
           {!isEditing && <>Add attachemnt</>}
         </Button>
       </div>
-      {!isEditing && courseInfo.attachments.length === 0 && <p>Not attachment attached</p> }
+      {!isEditing && courseInfo.attachments.length === 0 && (
+        <div className="text-[#414141] font-light text-[14px] leading-8">
+          Not attachment attached
+        </div>
+      )}
       {!isEditing && courseInfo.attachments.length > 0 && (
         <div>
-          {
-          courseInfo.attachments.map((attachmentItem)=>{
-            return(
-             <div className="flex justify-around">
-               <p>{attachmentItem.name}</p>
-               {deleteItem === attachmentItem.id && (
-                    <div>
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                    </div>
-                  )}
-                  {deleteItem !== attachmentItem.id && (
-                    <button
-                      onClick={() => onDelete(attachmentItem.id)}
-                      className="ml-auto hover:opacity-75 transition"
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
-                  )}
-             </div>
-            )
-          })
-        }
+          {courseInfo.attachments.map((attachmentItem) => {
+            return (
+              <div className="flex justify-around">
+                <div className="text-[#414141] font-light text-[14px] leading-8">
+                  {attachmentItem.name}
+                </div>
+                {deleteItem === attachmentItem.id && (
+                  <div>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  </div>
+                )}
+                {deleteItem !== attachmentItem.id && (
+                  <button
+                    onClick={() => onDelete(attachmentItem.id)}
+                    className="ml-auto hover:opacity-75 transition"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                )}
+              </div>
+            );
+          })}
         </div>
-      ) }
+      )}
       {isEditing && (
         <FileUpload
           onChange={(url) => {
-            console.log("UUrrll: ",url)
+            console.log("UUrrll: ", url);
             if (url) {
               onSubmit({ url: url });
             }
