@@ -53,6 +53,7 @@ const publishAction = async () => {
       );
       if (data.success) {
         toast.success("Successfully published");
+        router.push(`/teacher/courses`)
       }
     }
     router.refresh();

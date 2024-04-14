@@ -52,7 +52,7 @@ const CourseCompleteButton = ({
     }
   };
   return (
-    <Button onClick={Complete} disabled={isLoading}>
+    <Button variant={"own"} onClick={Complete} disabled={isLoading}>
       {isComplete ? "Not Completed" : "Mark as Complete"}
     </Button>
   );

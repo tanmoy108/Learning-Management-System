@@ -24,7 +24,8 @@ const onClick=async()=>{
 
   return (
     <div>
-        <Button onClick={onClick} disabled={isLoading}>{`Buy with ${FormatPrice(price)}`}</Button>
+      <div className='font-bold text-[#374246] leading-8 tracking-[0.28px] text-[20px]'>{`${FormatPrice(price)}`}</div>
+        <Button variant="own" onClick={onClick} disabled={isLoading}>Purchase</Button>
     </div>
   )
 }

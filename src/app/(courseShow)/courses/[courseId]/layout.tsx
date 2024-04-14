@@ -40,21 +40,19 @@ const CoursesLayout = async ({
     },
   });
 
-  console.log("f",findCourse);
   if (!findCourse) return redirect("/");
 
-  const getProgressValueofUser = await GetProgress(userId,params.courseId)
-  console.log("a",getProgressValueofUser)
+  const getProgressValueofUser = await GetProgress(userId, params.courseId);
 
   return (
     <>
-      <div className="w-full h-16 bg-[#fff] border-b flex px-5 fixed">
-      <Navbar/>
+      <div className="w-full h-[80px] bg-[#fff] shadow-own z-40 flex px-8 fixed">
+        <Navbar />
       </div>
-      <div className="bg-[#fff] border-r h-full w-56 z-50 inset-y-0 hidden md:flex flex-col fixed">
+      <div className="bg-[#fff] border-r h-full w-[250px] z-50 inset-y-0 hidden lg:flex flex-col fixed">
         <CoursesSidebar course={findCourse} progress={getProgressValueofUser} />
       </div>
-      <div className="px-5 md:pl-56 pt-16">{children}</div>
+      <div className="px-5 lg:pl-[280px] pt-[100px]">{children}</div>
     </>
   );
 };

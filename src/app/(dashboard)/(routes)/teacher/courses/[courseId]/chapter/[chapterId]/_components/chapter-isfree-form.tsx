@@ -57,15 +57,17 @@ const ChapterIsFreeForm = ({ chapterInfo, courseId }: obj) => {
 
   const { isSubmitting, isValid } = form.formState;
   return (
-    <div className="bg-orange-100">
+    <div>
       <div className="flex items-center">
-        <h2>Chapter Free check</h2>
-        <Button onClick={toogleEditing} variant={"ghost"}>
-          {!isEditing ? <>Edit isFree</> : <>Cancel</>}
+      <div className="text-[#414141] text-[16px] font-medium leading-8">
+        Is Chapter Free ?
+        </div>
+        <Button onClick={toogleEditing} variant="ownedit" size="ownsize">
+          {!isEditing ? <>Edit </> : <>Cancel</>}
         </Button>
       </div>
-      {!isEditing && !chapterInfo?.isFree && <p>The chapter is not free</p>}
-      {!isEditing && chapterInfo?.isFree && <p>The chapter is free</p>}
+      {!isEditing && !chapterInfo?.isFree && <div className="text-[#414141] font-light text-[14px] leading-8">The chapter is not free</div>}
+      {!isEditing && chapterInfo?.isFree && <div className="text-[#414141] font-light text-[14px] leading-8">The chapter is free</div>}
       {isEditing && (
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -87,14 +89,14 @@ const ChapterIsFreeForm = ({ chapterInfo, courseId }: obj) => {
                         Free
                       </FormLabel>
                       <FormDescription>
-                       if it is checked that means it is free of cost chapter
+                       If it is checked that means it is free of cost
                       </FormDescription>
                     </div>
                   </FormItem>
                 );
               }}
             />
-            <Button type="submit" disabled={!isValid || isSubmitting}>
+            <Button variant={"own"} type="submit" disabled={!isValid || isSubmitting}>
               Save
             </Button>
           </form>

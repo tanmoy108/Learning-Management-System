@@ -69,20 +69,20 @@ const ControlButton = ({
 
   return (
     <>
-      <div className="flex justify-between">
-        <div>
-          <Button onClick={publishAction} disabled={!disabled || isLoading}>
-            {isPublished ? "UnPublish" : "Publish"}
-          </Button>
-        </div>
-        <div>
-          <AlertModal onClickAlert={alertContinue}>
-            <Button>
-              <Trash className="h-4 w-4" />
-            </Button>
-          </AlertModal>
-        </div>
+      <div className="flex gap-x-3">
+        
+        <Button variant="own" onClick={publishAction} disabled={!disabled || isLoading}>
+          {isPublished ? "Unpublish" : "Publish"}
+        </Button>
+      
+      <div>
+      <AlertModal onClickAlert={alertContinue} >
+        <Button variant="owndelete" disabled={isLoading} >
+          <Trash className="h-4 w-4" />
+        </Button>
+        </AlertModal>
       </div>
+    </div>
     </>
   );
 };

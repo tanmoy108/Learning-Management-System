@@ -52,14 +52,16 @@ const ChapterTitleForm = ({ chapterInfo,courseId }: obj) => {
 
   const { isSubmitting, isValid } = form.formState;
   return (
-    <div className="bg-orange-100">
+    <div>
       <div className="flex items-center">
-        <h2>Chapter Title</h2>
-        <Button onClick={toogleEditing} variant={"ghost"}>
+      <div className="text-[#414141] text-[16px] font-medium leading-8">
+        Chapter Title
+        </div>
+        <Button onClick={toogleEditing} variant={"ownedit"} size="ownsize">
           {!isEditing ? <>Edit Title</> : <>Cancel</>}
         </Button>
       </div>
-      {!isEditing && <p>{chapterInfo.title}</p>}
+      {!isEditing && <div className="text-[#414141] font-light text-[14px] leading-8">{chapterInfo.title}</div>}
       {isEditing && (
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -79,7 +81,7 @@ const ChapterTitleForm = ({ chapterInfo,courseId }: obj) => {
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={!isValid || isSubmitting}>
+            <Button variant={"own"} type="submit" disabled={!isValid || isSubmitting}>
               Save
             </Button>
           </form>

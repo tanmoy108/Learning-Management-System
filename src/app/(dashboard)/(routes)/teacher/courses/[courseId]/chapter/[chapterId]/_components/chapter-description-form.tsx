@@ -53,14 +53,16 @@ const ChapterDescriptionForm = ({ chapterInfo, courseId }: obj) => {
 
   const { isSubmitting, isValid } = form.formState;
   return (
-    <div className="bg-orange-100">
+    <div>
       <div className="flex items-center">
-        <h2>Chapter description</h2>
-        <Button onClick={toogleEditing} variant={"ghost"}>
-          {!isEditing ? <>Edit description</> : <>Cancel</>}
+      <div className="text-[#414141] text-[16px] font-medium leading-8">
+        Chapter Description
+        </div>
+        <Button onClick={toogleEditing} variant="ownedit" size="ownsize">
+          {!isEditing ? <>Edit</> : <>Cancel</>}
         </Button>
       </div>
-      {!isEditing && !chapterInfo?.description && (<p>No description</p>)}
+      {!isEditing && !chapterInfo?.description && (<div className="text-[#414141] font-light text-[14px] leading-8">No description</div>)}
       {!isEditing && chapterInfo?.description && (<RichPreview value={chapterInfo?.description}/>)}
       {isEditing && (
         <Form {...form}>
@@ -80,7 +82,7 @@ const ChapterDescriptionForm = ({ chapterInfo, courseId }: obj) => {
                 );
               }}
             />
-            <Button type="submit" disabled={!isValid || isSubmitting}>
+            <Button variant={"own"} type="submit" disabled={!isValid || isSubmitting}>
               Save
             </Button>
           </form>

@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 import ChapterList from "./chapterList";
 import { CourseProgress } from "@/components/courseProgress";
+import Image from "next/image";
 interface courseSidebarProps {
   course: Course & {
     chapter: (Chapter & {
@@ -25,16 +26,20 @@ const CoursesSidebar = async ({ course, progress }: courseSidebarProps) => {
       },
     },
   });
-
   return (
-    <div>
-      <div>{course.title}</div>
-      {
+    <div className='w-full'>
+      <div className='flex pl-8 py-[23px]'>
+        <Image src="/logo.png" width={164.638} height={34} alt='logo'/>
+       </div>
+      <div className="pl-8 py-[23px] text-[16px] font-bold capitalize">{course.title}</div>
+     <div className="px-2 text-[12px] font-medium ">
+     {
         purchase && <div className="py-3">
-        <CourseProgress variant="success" value={progress} />
+        <CourseProgress variant="default" value={progress} />
         </div>
       }
-      <div>
+     </div>
+      <div className='w-full'>
         {course.chapter.length !== 0 &&
           course.chapter.map((item) => {
             return (
