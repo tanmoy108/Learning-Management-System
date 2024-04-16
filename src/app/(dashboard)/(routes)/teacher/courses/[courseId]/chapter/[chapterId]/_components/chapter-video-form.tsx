@@ -5,9 +5,9 @@ import { z } from "zod";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { Chapter, MuxData } from "@prisma/client";
+import { Chapter} from "@prisma/client";
 import FileUpload from "@/components/file-upload";
-import MuxPlayer from "@mux/mux-player-react";
+import ReactPlayer from "react-player";
 
 const formSchema = z.object({
   videoUrl: z.string().min(2, {
@@ -16,7 +16,7 @@ const formSchema = z.object({
 });
 
 interface obj {
-  chapterInfo: Chapter & { muxData?: MuxData | null };
+  chapterInfo: Chapter;
   courseId: string;
 }
 const ChapterVideoForm = ({ chapterInfo, courseId }: obj) => {
@@ -31,7 +31,6 @@ const ChapterVideoForm = ({ chapterInfo, courseId }: obj) => {
       `/api/courses/${courseId}/chapter/${chapterInfo.id}`,
       values
     );
-    console.log(data);
     toogleEditing();
     if (data.success) {
       toast.success("Updated");
@@ -78,13 +77,15 @@ const ChapterVideoForm = ({ chapterInfo, courseId }: obj) => {
           </div>
         ) : (
           <div className="h-40 w-full rounded-md">
-            <MuxPlayer playbackId={chapterInfo?.muxData?.playBackId || ""} />
+            {/* <MuxPlayer playbackId={chapterInfo?.muxData?.playBackId || ""} /> */}
+            <ReactPlayer playing={true} controls={true}
+        pip={true} stopOnUnmount={false} width="100%"
+        height="100%" url={chapterInfo?.videoUrl}/> 
           </div>
         ))}
       {isEditing && (
         <FileUpload
           onChange={(url) => {
-            console.log("UUrrll: ", url);
             if (url) {
               onSubmit({ videoUrl: url });
             }

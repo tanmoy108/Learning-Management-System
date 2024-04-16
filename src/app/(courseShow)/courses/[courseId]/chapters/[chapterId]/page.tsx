@@ -22,7 +22,7 @@ const ChapterInfo = async ({
   const {
     chapter,
     course,
-    muxData,
+    // muxData,
     attachments,
     nextChapter,
     userProgress,
@@ -53,7 +53,7 @@ const ChapterInfo = async ({
 
         <div className="w-[70%]">
           <VideoPlayers
-            playbackId={muxData?.playBackId!}
+            // playbackId={muxData?.playBackId!}
             courseId={courseId}
             chapterId={chapterId}
             nextChapterId={nextChapter?.id!}

@@ -14,7 +14,7 @@ const DashBoardRoot = async () => {
 
   return (
     <div className="h-screen">
-      <div className="flex sm:flex-col md:flex-row gap-5 mb-5">
+      <div className="flex xs:flex-col md:flex-row gap-5 mb-5">
         <div className="w-[363px] h-[77px] rounded-md bg-[#fff] flex items-center gap-x-2 pl-4">
            <img src="/clock.png" />
            <p className="text-[18px]">In Progress: {coursesInProgress.length}</p>

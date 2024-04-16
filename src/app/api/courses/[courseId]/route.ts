@@ -51,11 +51,7 @@ export async function DELETE(
         userId,
       },
       include: {
-        chapter: {
-          include: {
-            muxData: true,
-          },
-        },
+        chapter: true
       },
     });
     if (!findCourse)
@@ -64,11 +60,11 @@ export async function DELETE(
         { status: 401 }
       );
 
-    for (const chapter of findCourse?.chapter) {
-      if (chapter.muxData?.assetId) {
-        await video.assets.delete(chapter?.muxData?.assetId);
-      }
-    }
+    // for (const chapter of findCourse?.chapter) {
+    //   if (chapter.muxData?.assetId) {
+    //     await video.assets.delete(chapter?.muxData?.assetId);
+    //   }
+    // }
 
     const deletedCourse = await db.course.delete({
       where: {

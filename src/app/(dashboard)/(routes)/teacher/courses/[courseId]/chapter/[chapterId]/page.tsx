@@ -32,9 +32,9 @@ const Chapter = async ({
       id: params.chapterId,
       courseId: params.courseId,
     },
-    include: {
-      muxData: true,
-    },
+    // include: {
+    //   muxData: true,
+    // },
   });
 
   if (!findChapter) return redirect("/");

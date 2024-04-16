@@ -10,7 +10,6 @@ export async function POST(
 ) {
   try {
     const user = await currentUser();
-    console.log("tanmoy",user);
     
     if (!user || !user.id || !user?.emailAddresses?.[0]?.emailAddress) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -32,8 +31,6 @@ export async function POST(
       },
     });
     
-    console.log("pp",purchase)
-    console.log("cc",course)
 
     if (purchase) {
       return new NextResponse("Already purchasee", { status: 400 });
@@ -43,7 +40,6 @@ export async function POST(
       return new NextResponse("not found", { status: 404 });
     }
     
-    console.log("checkpoin1");
     const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [
       {
         price_data: {
@@ -80,7 +76,6 @@ export async function POST(
       });
     }
 
-    console.log("hello")
     const session = await stripe.checkout.sessions.create({
       customer: stripeCustomer.stripeCustomerId,
       line_items: line_items,

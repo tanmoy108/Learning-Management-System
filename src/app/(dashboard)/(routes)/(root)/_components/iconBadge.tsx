@@ -3,23 +3,19 @@ import { LucideIcon } from "lucide-react"
 
 interface IconProps{
     icon:LucideIcon,
-    value?:number | null,
     label:string
     variant:"default" | "success"
 
 }
 
-const Icon = ({icon,value,label,variant}:IconProps) => {
+const Icon = ({icon,label,variant}:IconProps) => {
     
   return (
-    <div>
-        
     <div className="flex items-center">
         <IconBadge icon={icon} variant={variant} />
-        <div>{label}</div>
+        <div className="pl-2">{label}</div>
     </div>
-    <div>{value}</div>
-    </div>
+   
   )
 }
 

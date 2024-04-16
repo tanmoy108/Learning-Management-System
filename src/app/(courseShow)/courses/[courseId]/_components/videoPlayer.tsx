@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 import ReactPlayer from "react-player";
 
 interface videoPlayerProps {
-  playbackId: string;
+  // playbackId: string;
   courseId: string;
   chapterId: string;
   nextChapterId: string;
@@ -20,7 +20,7 @@ interface videoPlayerProps {
 }
 
 const VideoPlayers = ({
-  playbackId,
+  // playbackId,
   courseId,
   chapterId,
   nextChapterId,

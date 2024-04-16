@@ -14,7 +14,7 @@ const NavbarButton = () => {
 
   return (
     <>
-    <div>
+    <div className="  lg:ml-40 w-1/2 xs:hidden md:block">
      {isSearchMode &&  <Search/>}
     </div>
     <div className="flex items-center gap-x-3" >

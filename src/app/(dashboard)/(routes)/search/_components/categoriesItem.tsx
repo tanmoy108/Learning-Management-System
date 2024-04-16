@@ -22,7 +22,6 @@ const CategoriesItem = ({itemName,itemId,itemIcon:Icon}:categoryItemProps) => {
   const isSelected = currentCategoryId === itemId;
   
   const onAction = ()=>{
-    console.log("ello")
     const url = qs.stringifyUrl({
       url:pathName,
       query:{
