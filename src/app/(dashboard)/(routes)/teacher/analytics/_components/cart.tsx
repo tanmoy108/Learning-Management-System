@@ -15,7 +15,6 @@ interface CartProps{
 }
 
 const Cart = ({data}:CartProps) => {
-    console.log("datadata",data)
   return (
     <div>
 

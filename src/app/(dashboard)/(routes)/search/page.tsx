@@ -15,7 +15,6 @@ interface searchParamsProps{
 }
 
 const SearchPage =async ({searchParams}:searchParamsProps) => {
-  console.log("ss",searchParams)
 
   const { userId } = auth();
 
@@ -33,7 +32,6 @@ const SearchPage =async ({searchParams}:searchParamsProps) => {
     userId:userId,
    ...searchParams
   })
-  console.log("getCourse",getCourse)
   return (
     <>
     <div className='block md:hidden'>

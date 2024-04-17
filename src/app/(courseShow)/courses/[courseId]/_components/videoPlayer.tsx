@@ -31,8 +31,6 @@ const VideoPlayers = ({
 }: videoPlayerProps) => {
   const [isReady, setIsReady] = useState(false);
   const router = useRouter();
-  console.log(isReady);
-  console.log(!isReady);
 
   const onEnd = async () => {
     try {

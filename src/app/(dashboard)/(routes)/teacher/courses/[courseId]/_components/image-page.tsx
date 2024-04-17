@@ -59,21 +59,21 @@ const ImageForm = ({ courseInfo }: obj) => {
                 d="M33.25 5.25H8.75C6.817 5.25 5.25 6.817 5.25 8.75V33.25C5.25 35.183 6.817 36.75 8.75 36.75H33.25C35.183 36.75 36.75 35.183 36.75 33.25V8.75C36.75 6.817 35.183 5.25 33.25 5.25Z"
                 stroke="#FDFDFD"
                 stroke-width="2"
-                stroke-linecap="round"
+                strokeLinecap="round"
                 stroke-linejoin="round"
               />
               <path
                 d="M15.75 19.25C17.683 19.25 19.25 17.683 19.25 15.75C19.25 13.817 17.683 12.25 15.75 12.25C13.817 12.25 12.25 13.817 12.25 15.75C12.25 17.683 13.817 19.25 15.75 19.25Z"
                 stroke="#FDFDFD"
                 stroke-width="2"
-                stroke-linecap="round"
+                strokeLinecap="round"
                 stroke-linejoin="round"
               />
               <path
                 d="M36.75 26.25L31.3495 20.8495C30.6932 20.1933 29.8031 19.8247 28.875 19.8247C27.9469 19.8247 27.0568 20.1933 26.4005 20.8495L10.5 36.75"
                 stroke="#FDFDFD"
                 stroke-width="2"
-                stroke-linecap="round"
+                strokeLinecap="round"
                 stroke-linejoin="round"
               />
             </svg>
@@ -90,7 +90,6 @@ const ImageForm = ({ courseInfo }: obj) => {
       {isEditing && (
         <FileUpload
           onChange={(url) => {
-            console.log("UUrrll: ", url);
             if (url) {
               onSubmit({ imageUrl: url });
             }

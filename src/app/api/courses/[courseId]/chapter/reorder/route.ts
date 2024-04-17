@@ -9,7 +9,6 @@ export async function PUT(
   try {
     const { userId } = auth();
     const { list } = await req.json();
-    console.log(list);
 
     if (!userId)
       return NextResponse.json(

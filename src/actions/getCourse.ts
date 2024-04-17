@@ -49,14 +49,12 @@ export const GetCourses = async ({
       },
     });
 
-    console.log("courses", courses);
 
     const coursesWithProgress: CourseWithProgressWithCategory[] =
       await Promise.all(
         courses.map(async (course) => {
             //if not buy then shows progress null 
           if (course.purchase.length === 0) {
-            console.log("null")
             return {
               ...course,
               progress: null,
@@ -64,7 +62,6 @@ export const GetCourses = async ({
           }
 
           const progressPercentage = await GetProgress(userId, course.id);
-          console.log("pp",progressPercentage)
 
           return {
             ...course,

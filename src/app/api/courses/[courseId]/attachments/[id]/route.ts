@@ -7,7 +7,6 @@ export async function DELETE(
   { params }: { params: { courseId: string; id: string } }
 ) {
   try {
-    console.log("params::",params)
     const { userId } = auth();
     if (!userId) return new NextResponse("Unauthorized", { status: 401 });
     const findAttachment = await db.attachment.findUnique({

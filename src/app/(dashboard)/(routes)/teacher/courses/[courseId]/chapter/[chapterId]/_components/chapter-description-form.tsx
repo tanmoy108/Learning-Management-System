@@ -71,7 +71,6 @@ const ChapterDescriptionForm = ({ chapterInfo, courseId }: obj) => {
               control={form.control}
               name="description"
               render={({ field }) => {
-                console.log("field", { ...field });
                 return (
                   <FormItem>
                     <FormControl>

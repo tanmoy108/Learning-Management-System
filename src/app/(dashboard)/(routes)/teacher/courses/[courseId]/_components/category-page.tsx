@@ -30,9 +30,6 @@ interface obj {
   }[]
 }
 const CategoryForm = ({ courseInfo,options }: obj) => {
-  console.log("category page course: ", courseInfo )
-  console.log("category page options: ", options )
-
 
   const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);

@@ -79,7 +79,7 @@ const CreatePage = () => {
                     </div>
                   </FormDescription>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="ex: Nextjs tutorial" {...field} />
                   </FormControl>
 
                   <FormMessage />

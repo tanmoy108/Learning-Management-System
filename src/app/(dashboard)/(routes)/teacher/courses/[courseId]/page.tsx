@@ -46,8 +46,6 @@ const SpecificCoursePage = async ({
     },
   });
 
-  console.log("categories: ", categories);
-
   const requireField = [
     course.title,
     course.description,

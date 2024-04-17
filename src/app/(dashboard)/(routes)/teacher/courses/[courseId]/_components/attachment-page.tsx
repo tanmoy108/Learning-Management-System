@@ -31,7 +31,6 @@ const AttachmentForm = ({ courseInfo }: obj) => {
       values
     );
     toogleEditing();
-    console.log(data);
     if (data.success) {
       toast.success("Updated");
       router.refresh();
@@ -44,7 +43,6 @@ const AttachmentForm = ({ courseInfo }: obj) => {
       const { data } = await axios.delete(
         `/api/courses/${courseInfo.id}/attachments/${id}`
       );
-      console.log(data);
       toast.success("Deleted");
       router.refresh();
     } catch (error) {
@@ -98,7 +96,6 @@ const AttachmentForm = ({ courseInfo }: obj) => {
       {isEditing && (
         <FileUpload
           onChange={(url) => {
-            console.log("UUrrll: ", url);
             if (url) {
               onSubmit({ url: url });
             }

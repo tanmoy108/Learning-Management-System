@@ -31,7 +31,6 @@ const getAnalytics = async (userId: string) => {
     });
 
     const getObjectWithTitlePrice = groudByCourse(purchasedCourses); // {"a":22,"b":34}
-    console.log(getObjectWithTitlePrice)
 
     const objectToArrayKeyValue = Object.entries(getObjectWithTitlePrice).map(
       ([courseTitle, total]) => ({ name: courseTitle, total: total })

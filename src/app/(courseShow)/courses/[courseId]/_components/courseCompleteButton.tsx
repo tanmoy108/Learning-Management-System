@@ -30,11 +30,6 @@ const CourseCompleteButton = ({
           isComplete: !isComplete,
         }
       );
-      console.log("daataa: ", data);
-      console.log("isComplete: ", isComplete);
-      console.log("nextChapterId: ", nextChapterId);
-
-
      
       if(data.success){
         if (!isComplete && !nextChapterId) {

@@ -17,7 +17,7 @@ const iconMap : Record<Category["name"],IconType>={
 
 const CategoriesParents = ({item}:categoryProps) => {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5  gap-x-3">
+    <div className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-5  gap-x-3">
       {
         item.map((category)=>{
           return(
