@@ -60,21 +60,21 @@ const ImageForm = ({ courseInfo }: obj) => {
                 stroke="#FDFDFD"
                 stroke-width="2"
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M15.75 19.25C17.683 19.25 19.25 17.683 19.25 15.75C19.25 13.817 17.683 12.25 15.75 12.25C13.817 12.25 12.25 13.817 12.25 15.75C12.25 17.683 13.817 19.25 15.75 19.25Z"
                 stroke="#FDFDFD"
                 stroke-width="2"
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M36.75 26.25L31.3495 20.8495C30.6932 20.1933 29.8031 19.8247 28.875 19.8247C27.9469 19.8247 27.0568 20.1933 26.4005 20.8495L10.5 36.75"
                 stroke="#FDFDFD"
                 stroke-width="2"
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
             </svg>
           </div>

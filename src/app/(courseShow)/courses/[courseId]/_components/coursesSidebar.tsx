@@ -6,6 +6,7 @@ import React from "react";
 import ChapterList from "./chapterList";
 import { CourseProgress } from "@/components/courseProgress";
 import Image from "next/image";
+import Link from "next/link";
 interface courseSidebarProps {
   course: Course & {
     chapter: (Chapter & {
@@ -29,7 +30,9 @@ const CoursesSidebar = async ({ course, progress }: courseSidebarProps) => {
   return (
     <div className='w-full'>
       <div className='flex pl-8 py-[23px]'>
+        <Link href="/">
         <Image src="/logo.png" width={164.638} height={34} alt='logo'/>
+        </Link>
        </div>
       <div className="pl-8 py-[23px] text-[16px] font-bold capitalize">{course.title}</div>
      <div className="px-2 text-[12px] font-medium ">

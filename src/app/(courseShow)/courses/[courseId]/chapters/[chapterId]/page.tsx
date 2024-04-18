@@ -79,7 +79,7 @@ const ChapterInfo = async ({
         {!!attachments.length &&
           attachments.map((item) => {
             return (
-              <li>
+              <li key={item.id}>
                 <a href={item.url} key={item.id} target="_blank">
                 {item.name}
               </a>

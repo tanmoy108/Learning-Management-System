@@ -71,7 +71,7 @@ const AttachmentForm = ({ courseInfo }: obj) => {
         <div>
           {courseInfo.attachments.map((attachmentItem) => {
             return (
-              <div className="flex justify-around">
+              <div key={attachmentItem.id} className="flex justify-around">
                 <div className="text-[#414141] font-light text-[14px] leading-8">
                   {attachmentItem.name}
                 </div>
