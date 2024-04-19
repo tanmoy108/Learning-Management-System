@@ -69,9 +69,14 @@ const VideoPlayers = ({
         </div>
       )}
       {!isLocked && (
+        <div className="w-full rounded-md">
+        {/* <MuxPlayer playbackId={chapterInfo?.muxData?.playBackId || ""} /> */}
         <ReactPlayer playing={true} controls={true}
-        pip={true} stopOnUnmount={false} width={640} height={360} url={videoUrl} onPlay={() => setIsReady(true)}
-          onEnded={onEnd} /> 
+        pip={true} stopOnUnmount={false} width="100%"
+        height="100%" url={videoUrl} onPlay={() => setIsReady(true)}
+          onEnded={onEnd} />
+      </div>
+         
         // <MuxPlayer
         //   title={title}
         //   className={cn(!isReady && "hidden w-5 h-6")}
