@@ -37,7 +37,7 @@ const ChapterInfo = async ({
   const completeOnEnd = !!purchase && !userProgress?.isCompleted; //userProgress?.isCompleted=true if null
   return (
     <div>
-      {isLocked ? (
+      {!purchase && (isLocked ? (
         <div className="bg-[#f6ff78] mb-5 px-5 text-[#414141] font-medium text-[14px] leading-8 capitalize">
           this chapter not purchased
         </div>
@@ -45,7 +45,7 @@ const ChapterInfo = async ({
         <div className="bg-[#f6ff78] mb-5 px-5 text-[#414141] font-medium text-[14px] leading-8 capitalize">
           this chapter is free
         </div>
-      )}
+      ))}
       <div className="w-full md:w-[90%] flex flex-col gap-3">
         <div className="text-[#414141] text-[18px] font-bold leading-8 tracking-[0.2px] capitalize">
           Chapter Name: {chapter.title}

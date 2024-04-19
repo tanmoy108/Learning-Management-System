@@ -51,7 +51,7 @@ const CoursesLayout = async ({
         <BrowseNavbar courseId={params.courseId} />
       </div>
   
-      <div className="bg-[#dacb44] border-r h-full w-[250px] z-50 inset-y-0 hidden lg:flex flex-col fixed">
+      <div className="bg-[#ffffff] border-r h-full w-[250px] z-50 inset-y-0 hidden lg:flex flex-col fixed">
         <CoursesSidebar course={findCourse} progress={getProgressValueofUser} />
       </div>
       <div className="px-5 lg:pl-[280px] pt-[100px]">{children}</div>
